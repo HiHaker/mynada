@@ -34,7 +34,7 @@ class ZSSGAN(torch.nn.Module):
     def forward(self, batch_size, truncation=1, randomize_noise=True):
         sample_z = torch.randn(batch_size, 512, device=self.device)
 
-        w_styles = [self.generator.style(s) for s in [sample_z]]
+        w_styles = [self.generator_trainable.style(s) for s in [sample_z]]
 
         # 得到frozen image
         frozen_img = \
