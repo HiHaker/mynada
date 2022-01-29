@@ -3,14 +3,14 @@ from sg2_model import Generator
 
 
 class ZSSGAN(torch.nn.Module):
-    def __init__(self, device, checkpoint_frozen_path, checkpoint_trainable_path):
+    def __init__(self, device, checkpoint_frozen_path, checkpoint_trainable_path, img_size):
         super(ZSSGAN, self).__init__()
         # gpu设备
         self.device = device
 
         # Set up frozen (source) generator
         self.generator_frozen = Generator(
-            size=256, style_dim=512, n_mlp=8
+            size=img_size, style_dim=512, n_mlp=8
         ).to(device)
 
         # load model
@@ -22,7 +22,7 @@ class ZSSGAN(torch.nn.Module):
 
         # Set up trainable (target) generator
         self.generator_trainable = Generator(
-            size=256, style_dim=512, n_mlp=8
+            size=img_size, style_dim=512, n_mlp=8
         ).to(device)
 
         # load model
