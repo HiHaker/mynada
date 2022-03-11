@@ -31,7 +31,7 @@ class ZSSGAN2(torch.nn.Module):
 
         self.generator_trainable.eval()
 
-    def forward(self, latents, batch_size, truncation=1, randomize_noise=True):
+    def forward(self, latents, truncation=1, randomize_noise=True):
         # 得到trainable image
         trainable_img = \
             self.generator_trainable(latents, input_is_latent=True, truncation=truncation,
