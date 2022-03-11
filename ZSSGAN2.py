@@ -2,7 +2,7 @@ import torch
 from sg2_model import Generator
 
 
-class ZSSGAN(torch.nn.Module):
+class ZSSGAN2(torch.nn.Module):
     def __init__(self, device, checkpoint_frozen_path, checkpoint_trainable_path, img_size):
         super(ZSSGAN, self).__init__()
         # gpu设备
